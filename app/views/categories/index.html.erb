@@ -1,0 +1,6 @@
+<%= render 'shared/content_title', title: "Categories" %>
+
+
+<% @categories.each do |x| %>
+  <li><%= link_to x.name, category_path(x) %></li>
+<% end %>

@@ -1,0 +1,20 @@
+<p class ='pull-right'>
+  [<%= link_to 'edit this post', edit_post_path(@post) %>]
+</p>
+
+
+
+<p><%= render @post.categories %></p>
+
+<%= render 'shared/content_title', title: @post.title %>
+<%= render 'shared/check_error', obj: @comment %>
+<p>
+  <h5>Submit New Comment:</h5>
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.text_area :body %><br>
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
+    <% end %>
+
+<hr></p>
+
+<p><%= @post.description %><hr></p>

@@ -1,0 +1,22 @@
+<!-- Display errors in red if form didn't go through  -->
+
+<%= render 'shared/check_error', obj: @post %>
+
+<!-- Model-backed Form -->
+<div class = 'well'>
+  <%= form_for @post do |f| %>
+  <div class = 'control-group'>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>  
+  <div class = 'control-group'>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+  <div class = 'control-group'> 
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 3 %>
+  </div>
+  <%= f.submit submit_button, class: 'btn btn-primary' %>
+  <% end %>
+</div>
