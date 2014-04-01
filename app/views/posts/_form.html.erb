@@ -17,6 +17,31 @@
     <%= f.label :description %>
     <%= f.text_area :description, rows: 3 %>
   </div>
+  <div class = 'control-group'>
+    <%= f.label "Categories" %>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |box| %>
+      <% box.label(class: "checkbox inline") {box.check_box(class: "checkbox") + box.text} %>
+      <% end %>
+
+  </div>
+
+<!--
+  <% array = [] %>
+  <% array1 = [] %>
+  <% Category.all.each do |category| %>
+  <% array1 << category.id %>
+  <% array1 << category.name %>
+  <% array << array1 %>
+  <% array1 = [] %>
+  <% end %>
+
+  <%= f.collection_check_boxes :category_ids, array, :first, :last %>
+-->
+
+
+
+
+
   <%= f.submit submit_button, class: 'btn btn-primary' %>
   <% end %>
 </div>

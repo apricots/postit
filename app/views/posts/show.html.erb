@@ -8,13 +8,25 @@
 
 <%= render 'shared/content_title', title: @post.title %>
 <%= render 'shared/check_error', obj: @comment %>
-<p>
-  <h5>Submit New Comment:</h5>
-  <%= form_for [@post, @comment] do |f| %>
-    <%= f.text_area :body %><br>
-    <%= f.submit "Submit", class: 'btn btn-primary' %>
-    <% end %>
-
-<hr></p>
-
 <p><%= @post.description %><hr></p>
+
+<p>
+  <%= form_for [@post, @comment] do |f| %>
+    <div class = 'control-group'>
+      <%= f.label :body, "Leave a Comment:" %>
+      <%= f.text_area :body, rows:3, class: 'span4' %><br>
+    </div>
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
+  <% end %>
+<hr>
+</p>
+
+
+<hr>
+<h5>Comments:</h5>
+<% @comments.each do |comment| %>
+  <div class='well span8'>
+    <en><%= comment.body %><br></en>
+    <span class="quiet">by: </span><%= comment.creator.username %> <small>at <%= comment.created_at %></small>
+  </div>
+<% end %>

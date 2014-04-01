@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comments = Comment.where("post_id = #{params[:id]}")
   end
 
   def new
@@ -17,7 +18,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.creator = User.first #change this later!
-
     if @post.save
       flash[:notice]= "Your post was created."
       redirect_to posts_path
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :url, :description)
+    params.require(:post).permit(:title, :url, :description, category_ids: [])
   end
 
 

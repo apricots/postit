@@ -3,8 +3,10 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
-    @comment.creator = User.first
+    @comment.creator = User.first #hard-coded in for now
     @comment.post = @post
+    @comments = Comment.where("post_id = #{params[:post_id]}")
+
     if @comment.save
       flash[:notice] = "Comment submitted."
       redirect_to post_path(@post)
