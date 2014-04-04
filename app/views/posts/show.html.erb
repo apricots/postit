@@ -1,6 +1,8 @@
-<p class ='pull-right'>
-  [<%= link_to 'edit this post', edit_post_path(@post) %>]
-</p>
+<% if logged_in? %>
+  <p class ='pull-right'>
+    [<%= link_to 'edit this post', edit_post_path(@post) %>]
+  </p>
+<% end %>
 
 
 
@@ -10,16 +12,18 @@
 <%= render 'shared/check_error', obj: @comment %>
 <p><%= @post.description %><hr></p>
 
-<p>
-  <%= form_for [@post, @comment] do |f| %>
-    <div class = 'control-group'>
-      <%= f.label :body, "Leave a Comment:" %>
-      <%= f.text_area :body, rows:3, class: 'span4' %><br>
-    </div>
-    <%= f.submit "Submit", class: 'btn btn-primary' %>
-  <% end %>
-<hr>
-</p>
+<% if logged_in? %>
+  <p>
+    <%= form_for [@post, @comment] do |f| %>
+      <div class = 'control-group'>
+        <%= f.label :body, "Leave a Comment:" %>
+        <%= f.text_area :body, rows:3, class: 'span4' %><br>
+      </div>
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
+    <% end %>
+  <hr>
+  </p>
+<% end %>
 
 
 <hr>
@@ -27,6 +31,6 @@
 <% @comments.each do |comment| %>
   <div class='well span8'>
     <en><%= comment.body %><br></en>
-    <span class="quiet">by: </span><%= comment.creator.username %> <small>at <%= comment.created_at %></small>
+    <span class="quiet">by: </span><%= comment.creator.username %> <small>on <%= timestamp(comment.created_at) %></small>
   </div>
 <% end %>
