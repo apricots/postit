@@ -1,13 +1,4 @@
-<h4>Register</h4>
+<%= render 'shared/content_title', title: "Register" %>
 
-<div class ='well'>
-  <div class = 'control-group'>
-    <p><label_for="Username"> Username: </label></p>
-    <input type='text'></input>
-  </div>
-    <div class = 'control-group'>
-    <p><label_for="Password"> Password: </label></p>
-    <input type='text'></input>
-  </div>
-  <input type="submit"  value="Submit">
-</div>
+<%= render 'form', submit_button: "Create User" %>
+

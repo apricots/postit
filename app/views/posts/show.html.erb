@@ -29,8 +29,5 @@
 <hr>
 <h5>Comments:</h5>
 <% @comments.each do |comment| %>
-  <div class='well span8'>
-    <en><%= comment.body %><br></en>
-    <span class="quiet">by: </span><%= comment.creator.username %> <small>on <%= timestamp(comment.created_at) %></small>
-  </div>
+<%= render '/comments/comment', comment: comment %>
 <% end %>

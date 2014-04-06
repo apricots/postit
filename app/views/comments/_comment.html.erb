@@ -1,0 +1,12 @@
+
+<!-- By default, show_post is fault, so can override when necessary -->
+<% show_post ||= false %> 
+
+
+<div class='well span8'>
+  <en><%= comment.body %><br></en>
+  <% if show_post %>
+    on <%= link_to comment.post.title, post_path(comment.post) %><br>
+  <% end %>
+  <span class="quiet">by: </span><%= link_to comment.creator.username, user_path(comment.creator) %> <small>on <%= timestamp(comment.created_at) %></small>
+</div>
