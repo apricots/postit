@@ -1,7 +1,18 @@
 
 <!-- By default, show_post is fault, so can override when necessary -->
 <% show_post ||= false %> 
-
+<div class='row'>
+  <div class="span0 well text-center">
+    <%= link_to '' do %>
+    <i class='icon-arrow-up'></i>
+    <% end %>
+    <br>
+    <%= comment.total_votes %>
+    <br>
+    <%= link_to '' do %>
+    <i class='icon-arrow-down'></i>
+    <% end %>
+  </div>
 
 <div class='well span8'>
   <en><%= comment.body %><br></en>
@@ -9,4 +20,6 @@
     on <%= link_to comment.post.title, post_path(comment.post) %><br>
   <% end %>
   <span class="quiet">by: </span><%= link_to comment.creator.username, user_path(comment.creator) %> <small>on <%= timestamp(comment.created_at) %></small>
+</div>
+
 </div>

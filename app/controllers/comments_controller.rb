@@ -18,6 +18,18 @@ class CommentsController < ApplicationController
 
   end
 
+  def vote
+    @vote = Vote.create(voteable: @comment, creator: current_user, vote:params[:vote])
+  
+    if @vote.valid?
+      flash[:notice] = "your vote counted."
+    else
+      flash[:error] = "your vote was not counted"
+    end
+
+    redirect_to :back
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:body)
