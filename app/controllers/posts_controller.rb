@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.where("post_id = #{params[:id]}")
+    @comments = Comment.where("post_id = #{params[:id]}").sort_by{|x| x.total_votes}.reverse
   end
 
   def new
@@ -44,11 +44,11 @@ class PostsController < ApplicationController
 
   def vote
     @vote = Vote.create(voteable: @post, creator: current_user, vote:params[:vote])
-  
+
     if @vote.valid?
-      flash[:notice] = "your vote counted."
+      flash[:notice] = "Your vote was counted."
     else
-      flash[:error] = "your vote was not counted"
+      flash[:error] = "You can only vote once."
     end
 
     redirect_to :back
