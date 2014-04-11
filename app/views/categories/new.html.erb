@@ -3,8 +3,9 @@
 <%= render 'shared/check_error', obj: @category %>
 
 <div class ='well'>
-  <div class = 'control-group'>
+
     <%= form_for @category do |f| %>
+      <div class = 'control-group'>
       <%= f.label :name %>
       <%= f.text_field :name %>
   </div>
