@@ -28,7 +28,11 @@ class Post < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug = self.title.gsub(" ", "-").downcase
+    str = self.title
+    str = str.strip
+    str.gsub! /\s*[^A-Za-z0-9]\s*/, "-" #regx replaces non alphanumeric chars with -
+    str.gsub! /-+/,"-" #gets rid of more than one dash in a row
+    self.slug = str.downcase
   end
 end
 

@@ -9,7 +9,8 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.where("post_id = #{params[:id]}").sort_by{|x| x.total_votes}.reverse
+    post = Post.find_by(slug: params[:id])
+    @comments = Comment.where("post_id = #{post.id}").sort_by { |x| x.total_votes}.reverse
   end
 
   def new
