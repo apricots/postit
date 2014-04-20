@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save 
       flash[:notice] = "Hi #{@user.username}! You have created a new account!"
       session[:user_id] = @user.id

@@ -8,8 +8,9 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, length: {minimum: 5}
   validates :description, presence: true
   validates :url, presence: true
+  validates :user_id, presence: true
 
-  before_save :generate_slug
+  before_save :generate_slug!
 
   def total_votes
     up_votes - down_votes
@@ -27,12 +28,34 @@ class Post < ActiveRecord::Base
     self.slug
   end
 
-  def generate_slug
-    str = self.title
-    str = str.strip
+  def generate_slug!
+    the_slug = to_slug(self.title)
+    post = Post.find_by slug: the_slug
+    count = 2
+    while post && post != self
+      the_slug = append_suffix(the_slug, count)
+      post = Post.find_by slug: the_slug
+      count += 1
+    end
+    self.slug = the_slug.downcase
+  end
+
+  # deals with slug edge cases with same title
+  def append_suffix(str, count)
+    # if already appending 2 at the end of slug, then remove and increment next count
+    if str.split('-').last.to_i != 0
+      return str.split('-').slice(0...-1).join('-') + "-" + count.to_s
+    # if first time appending, add -2  
+    else
+      return str = str + '-2'
+    end
+  end
+
+  def to_slug(name)
+    str = name.strip
     str.gsub! /\s*[^A-Za-z0-9]\s*/, "-" #regx replaces non alphanumeric chars with -
     str.gsub! /-+/,"-" #gets rid of more than one dash in a row
-    self.slug = str.downcase
+    str.downcase
   end
 end
 

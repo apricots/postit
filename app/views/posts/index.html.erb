@@ -1,5 +1,7 @@
-<%= render 'shared/content_title', title: "All Posts" %>
+<div id="all-posts">
+  <%= render 'shared/content_title', title: "All Posts" %>
 
 <% @posts.each do |post| %>
 <%= render 'post', post: post %>
 <% end %>
+</div>
