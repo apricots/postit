@@ -11,7 +11,10 @@
 
 <%= render 'shared/content_title', title: @post.title %>
 <%= render 'shared/check_error', obj: @comment %>
-<p><%= @post.description %><hr></p>
+<p><%= @post.description %></p>
+    <p>
+      <span class="quiet">Posted by: </span><%= link_to @post.creator.username, user_path(@post.creator) %> <small>on <%= timestamp(@post.created_at) %></small>
+    </p><hr>
 
 <% if logged_in? %>
   <p>

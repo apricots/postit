@@ -11,13 +11,18 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
+  <center><a href="<%root_path%>"><img src="http://i.imgur.com/ENqrbls.png" title="weekend planner" /></a></center>
   <body>
+
     <header>
-      <div class="navbar">
+      <div id="nav-wrapper">
+    <div id="nav" class="navbar">
+<!--       <div class="navbar affix-top" data-spy="affix"> -->
         <div class="navbar-inner">
           <div class="container">
             <%= render 'layouts/navigation' %>
           </div>
+        </div>
         </div>
       </div>
     </header>

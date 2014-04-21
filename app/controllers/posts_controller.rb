@@ -11,6 +11,14 @@ class PostsController < ApplicationController
     @comment = Comment.new
     post = Post.find_by(slug: params[:id])
     @comments = Comment.where("post_id = #{post.id}").sort_by { |x| x.total_votes}.reverse
+    # parse post object and return json for api
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: post
+      end
+    end
+
   end
 
   def new
