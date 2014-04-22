@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :vote]
-  before_action :require_user, except: [:show, :index]
+  before_action :require_user, except: [:show, :index, :archive]
 
   def index
     @posts = Post.all.sort_by{|x| x.total_votes}.reverse
@@ -41,12 +41,14 @@ class PostsController < ApplicationController
   end
 
   def update
+
     if @post.update(post_params)
       flash[:notice] = "Your post was edited."
       redirect_to post_path(@post)
     else
       render :edit
     end
+
   end
 
   def set_post
@@ -71,10 +73,15 @@ class PostsController < ApplicationController
 
   end
 
+  def archive
+    @posts = Post.where(active:false).sort_by{|x| x.total_votes}.reverse
+  end
+
+
 
   private
   def post_params
-    params.require(:post).permit(:title, :url, :description, category_ids: [])
+    params.require(:post).permit(:title, :url, :description, :active, category_ids: [])
   end
 
 

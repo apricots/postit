@@ -26,7 +26,7 @@
 
 <% if logged_in? %>
 <div class ='nav_item'>
-  <%= link_to 'New Post', new_post_path, class: 'btn btn-success btn-small'%>
+  <%= link_to 'New Post', new_post_path, class: 'btn btn-custom btn-small'%>
 </div>
 <!-- <div class ='nav_item'>
   <%= link_to 'Log Out', logout_path, class: 'btn btn-small'%>
@@ -72,3 +72,7 @@
   <%= link_to 'New User', register_path, class: 'btn btn-success btn-small'%>
 </div>
 <% end %>
+
+<div class ='nav_item'>
+  <%= link_to 'Archive', archive_posts_path, class: 'btn btn-small'%>
+</div>

@@ -12,6 +12,10 @@ PostitTemplate::Application.routes.draw do
     member do
       post :vote
     end
+
+    collection do
+      get :archive
+    end
     
     resources :comments, only: [:create] do
       member do

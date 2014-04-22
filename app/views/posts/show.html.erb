@@ -27,6 +27,15 @@
     <% end %>
   <hr>
   </p>
+
+<p>
+  <%= form_for @post, :remote => true do |f| %>
+
+    <%= f.label :active, "Active:" %>
+  <%= f.check_box :active %>
+<%= f.submit "Save", class: 'btn btn-small' %>
+  <% end %>
+</p>
 <% end %>
 
 
