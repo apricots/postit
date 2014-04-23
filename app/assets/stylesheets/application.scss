@@ -99,3 +99,14 @@ float:right;
 border-color:#ff0000 #0000ff;
 }
 
+.badge a:link {color:#fff !important;} 
+.badge a:visited {color:#fff !important;} 
+.badge a:hover {color:#fff !important;} 
+.badge a:active {color:#fff !important;} 
+
+
+.well a:link {color:#2bbcc4;}      /* unvisited link */
+.well a:visited {color:#2bbcc4;}  /* visited link */
+.well a:hover {color:#2bbcc4;}  /* mouse over link */
+.well a:active {color:#2bbcc4;}  /* selected link */ 
+
