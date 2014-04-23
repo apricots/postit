@@ -2,10 +2,14 @@
 
 <%= render 'shared/content_title', title: header %>
 
-
-(<%= @category.posts.size %>) posts found
+<h4>Active (<%= @category.posts.where(archive:false).size %>)</h4>
 <br><br>
+<% @category.posts.where(archive:false).each do |post| %>
+<%= render 'posts/post', post: post %>
+<% end %>
 
-<% @category.posts.each do |post| %>
+<h4>Archived (<%= @category.posts.where(archive:true).size %>)</h4>
+<br><br>
+<% @category.posts.where(archive:true).each do |post| %>
 <%= render 'posts/post', post: post %>
 <% end %>
