@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :require_user, except: [:show, :index, :archive]
 
   def index
-    @posts = Post.all.sort_by{|x| x.total_votes}.reverse
+    @posts = Post.where(archive:false).sort_by{|x| x.total_votes}.reverse
   end
 
   def show
@@ -74,14 +74,14 @@ class PostsController < ApplicationController
   end
 
   def archive
-    @posts = Post.where(active:false).sort_by{|x| x.total_votes}.reverse
+    @posts = Post.where(archive:true).sort_by{|x| x.total_votes}.reverse
   end
 
 
 
   private
   def post_params
-    params.require(:post).permit(:title, :url, :description, :active, category_ids: [])
+    params.require(:post).permit(:title, :image_url, :description, :archive, category_ids: [])
   end
 
 

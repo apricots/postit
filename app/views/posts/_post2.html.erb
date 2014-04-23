@@ -1,5 +1,5 @@
-<div class="row well">
-  <div class="span0 text-center">
+<div class="row well ">
+  <div class="span2 text-center">
     <%= link_to vote_post_path(post, vote: true), method: 'post', remote: true do %>
     <i class='icon-arrow-up'></i>
     <% end %>
@@ -12,9 +12,17 @@
   </div>
   <div class='span0'>
   </div>
-  <div class="span8">
+  <div class="span6">
 
     <h4><%= link_to post.title, post_path(post)%></h4>
-        <%= render post.categories %>
+
+<!--         <%= render post.categories %> -->
+            <p>
+      <span class="quiet">Posted by: </span><%= link_to post.creator.username, user_path(post.creator) %> <small>on <%= timestamp(post.created_at) %></small>
+    </p>
+  </div>
+
+  <div class='span1 circling'>
+        <img src="<%=post.image_url%>" class="img-circle" height="75" width="75">
   </div>
 </div>

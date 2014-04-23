@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.creator = current_user
     @comment.post = @post
-    @comments = Comment.where("post_id = #{params[:post_id]}")
+    @comments = Comment.where("post_id = #{@post.id}")
 
     if @comment.save
       flash[:notice] = "Comment submitted."

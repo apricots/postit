@@ -1,7 +1,5 @@
-<%= render 'shared/content_title', title: "Archive" %>
-
-<br>
+<br><br>
 <% @posts.each do |post| %>
-<%= render 'post', post: post %>
+<%= render 'gallery', post: post %>
 <% end %>
 </div>

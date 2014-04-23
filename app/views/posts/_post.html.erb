@@ -13,7 +13,7 @@
   
   <div class="span8 well">
     <%= render post.categories %>
-    <h4><%= link_to post.title, fix_url(post.url)%></h4>
+    <h4><%= post.title%></h4>
     <p><%= post.description %></p>
     <p>
       <span class="quiet">Posted by: </span><%= link_to post.creator.username, user_path(post.creator) %> <small>on <%= timestamp(post.created_at) %></small>

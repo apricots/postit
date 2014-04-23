@@ -1,0 +1,10 @@
+<div class="row well span5">
+  <div class='span3'>
+      <h4><%= link_to post.title, post_path(post)%></h4>
+      <small><i>Updated:<%= timestamp(post.updated_at) %></small></i>
+  </div>
+  <br><br><br><p>
+  <div class='span4'>
+    <img src="<%=post.image_url%>" class="img-rounded" height="250" width="250">
+  </div></p>
+</div>

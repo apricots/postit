@@ -1,4 +1,4 @@
-
+<br>
 <% if logged_in? and @post.user_id == current_user.id %>
   <p class ='pull-right'>
     [<%= link_to 'edit this post', edit_post_path(@post) %>]
@@ -6,15 +6,19 @@
 <% end %>
 
 
-
+<div class='well'>
 <p><%= render @post.categories %></p>
 
 <%= render 'shared/content_title', title: @post.title %>
 <%= render 'shared/check_error', obj: @comment %>
 <p><%= @post.description %></p>
+<p><img src='<%=@post.image_url%>'height="250" width="250"></p>
     <p>
       <span class="quiet">Posted by: </span><%= link_to @post.creator.username, user_path(@post.creator) %> <small>on <%= timestamp(@post.created_at) %></small>
-    </p><hr>
+    </p><hr><%= form_for @post, :remote => true do |f| %>
+<%= f.label :archive , "Archive:", style: 'float: left'%>
+<%= f.check_box :archive, :class => 'submittable' %>
+<% end %></div><div class='well'>
 
 <% if logged_in? %>
   <p>
@@ -23,24 +27,19 @@
         <%= f.label :body, "Leave a Comment:" %>
         <%= f.text_area :body, rows:3, class: 'span4' %><br>
       </div>
-      <%= f.submit "Submit", class: 'btn btn-primary' %>
+      <%= f.submit "Submit", class: 'btn btn-custom' %>
     <% end %>
   <hr>
   </p>
 
-<p>
-  <%= form_for @post, :remote => true do |f| %>
 
-    <%= f.label :active, "Active:" %>
-  <%= f.check_box :active %>
-<%= f.submit "Save", class: 'btn btn-small' %>
-  <% end %>
-</p>
 <% end %>
-
+</div>
 
 <hr>
-<h5>Comments:</h5>
-<% @comments.each do |comment| %>
-<%= render '/comments/comment', comment: comment %>
+<% if @comments.count > 0 %>
+  <h5>Comments:</h5>
+  <% @comments.each do |comment| %>
+  <%= render '/comments/comment', comment: comment %>
+  <% end %>
 <% end %>
