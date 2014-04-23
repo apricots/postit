@@ -4,12 +4,12 @@
 
 <h4>Active (<%= @category.posts.where(archive:false).size %>)</h4>
 <br><br>
-<% @category.posts.where(archive:false).each do |post| %>
+<% @category.posts.where(archive:false).sort_by{|x| x.total_votes}.reverse.each do |post| %>
 <%= render 'posts/post', post: post %>
 <% end %>
 
 <h4>Archived (<%= @category.posts.where(archive:true).size %>)</h4>
 <br><br>
-<% @category.posts.where(archive:true).each do |post| %>
+<% @category.posts.where(archive:true).sort_by{|x| x.total_votes}.reverse.each do |post| %>
 <%= render 'posts/post', post: post %>
 <% end %>

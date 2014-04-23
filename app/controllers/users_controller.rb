@@ -32,9 +32,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      @user = session[:user_id]
       flash[:notice] = "Your information has been saved."
-      @user = current_user
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       render :edit
     end
