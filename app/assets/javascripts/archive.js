@@ -4,7 +4,4 @@ $(document).ready(function(){
         $(this).parents('form:first').submit();
     });
 
-    $( ".well" ).click(function() {
-  $( this ).toggleClass( "well-2" );
-});
 }); 
