@@ -6,9 +6,13 @@
     <%= f.text_field :username %>
   </div>  
   <div class = 'control-group'>
+    <%= f.label :time_zone %>
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: Time.zone.name %>
+  </div>
+  <div class = 'control-group'>
     <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
-  <%= f.submit submit_button, class: 'btn btn-primary btn-custom' %>
+  <%= f.submit submit_button, class: 'btn btn-custom' %>
   <% end %>
 </div>

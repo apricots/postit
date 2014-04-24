@@ -4,6 +4,9 @@ module ApplicationHelper
   end
 
   def timestamp(datetime)
-     datetime.strftime("%m/%d/%Y at %I:%M %p")
+    if logged_in? && !current_user.time_zone.blank?
+      datetime = datetime.in_time_zone(current_user.time_zone)
+    end
+    datetime.strftime("%m/%d/%Y at %I:%M %p")
   end
 end

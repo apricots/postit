@@ -11,4 +11,8 @@ class User < ActiveRecord::Base;
   validates_uniqueness_of :username, :case_sensitive => false
 
   sluggable_column :username
+
+  def admin?
+    self.role == 'admin'
+  end
 end

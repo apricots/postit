@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :vote]
   before_action :require_user, except: [:show, :index, :archive]
+  before_action :require_creator, only: [:edit, :update]
 
   def index
     @posts = Post.where(archive:false).sort_by{|x| x.total_votes}.reverse
@@ -74,6 +75,11 @@ class PostsController < ApplicationController
 
   def archive
     @posts = Post.where(archive:true).sort_by{|x| x.total_votes}.reverse
+  end
+
+  # not logged in, or logged in and not the correct user. have to check logged in or throw exception
+  def require_creator
+    access_denied unless logged_in? and ((current_user == @post.creator) || current_user.admin?)
   end
 
 
