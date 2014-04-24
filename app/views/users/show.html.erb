@@ -6,6 +6,11 @@
     <dd><%= @user.username %></dd>
     <dt>Time Zone:</dt>
     <dd><%= @user.time_zone %></dd>
+    <dt>Member Since:</dt>
+    <dd><%= timestamp(@user.created_at) %></dd>
+    <% if @user.admin? %>
+    <dt>Admin <i class='icon-heart'></i></dt>
+    <% end %>
   </dl>
 </div>
 
