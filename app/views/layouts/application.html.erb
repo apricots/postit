@@ -12,7 +12,16 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
-  <center><a href="<%=root_path%>"><img src="http://i.imgur.com/ENqrbls.png" title="weekend planner" /></a></center>
+
+     
+    <!-- This div is used to indicate the original position of the scrollable fixed div. -->
+    <div><a href="<%=root_path%>"><img src="http://i.imgur.com/I9sRZl3.png"></a></div>
+    <div class="scroller_anchor"></div>
+     
+    <!-- This div will be displayed as fixed bar at the top of the page, when user scrolls -->
+
+    <div class="scroller"><a href="<%=root_path%>"><img src="http://i.imgur.com/d8W458N.png" title="weekend planner" /></a></div>
+</div>
   <body>
 
     <header>
