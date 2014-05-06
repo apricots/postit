@@ -19,7 +19,7 @@
       <span class="quiet">Posted by: </span><%= link_to @post.creator.username, user_path(@post.creator) %> <small>on <%= timestamp(@post.created_at) %> </small>(<%= @post.up_votes %><i class='icon-arrow-up'></i>, <%= @post.down_votes %><i class='icon-arrow-down'></i>)
     </p>
 
-    <% if logged_in? %>
+    <% if logged_in? and current_user.admin? %>
     <hr><%= form_for @post, :remote => true do |f| %>
 <%= f.label :archive , "Archive:", style: 'float: left'%>
 <%= f.check_box :archive, :class => 'submittable' %>
