@@ -18,10 +18,10 @@
 <h5><%= @user.username %>'s Activity</h5>
 
 <ul class='nav nav-tabs'>
-  <li class='<%= 'active' if params[:tab].nil? %>'>
+  <li class='<%= 'active' if params[:tab].nil? %> colored_link'>
     <%= link_to "Posts (#{@user.posts.size})", user_path(@user) %>
   </li>
-  <li class='<%= 'active' if params[:tab] == 'comments' %>'>
+  <li class='<%= 'active' if params[:tab] == 'comments' %> colored_link'>
     <%= link_to "Comments (#{@user.comments.size})", user_path(@user, tab: 'comments') %>
   </li>
 </ul>
