@@ -13,6 +13,13 @@
     <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
+  <div class = 'control-group'>
+    <%= f.label :phone, "Phone <small>(numbers only, optional)</small>".html_safe%>
+    <%= f.text_field :phone %>
+<!--     <%= link_to '#', id: 'two_factor_phone' do %>
+      <i class='icon-question-sign'></i> -->
+    <% end %>
+  </div>
   <%= f.submit submit_button, class: 'btn btn-custom' %>
   <% end %>
 </div>
