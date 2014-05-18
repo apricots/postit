@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(archive:false).sort_by{|x| x.total_votes}.reverse
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   def show

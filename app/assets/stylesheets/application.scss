@@ -118,3 +118,24 @@ body {
 .test_content{margin:10px 0;}
 .scroller_anchor{height:0px; margin:0; padding:0;}
 .scroller{background:#FFF; margin:0 0 0px; z-index:100; }
+
+/* changing colors of links for Kaminari pagination */
+.page a {
+color:#2bbcc4;
+} 
+
+.next a {
+color:#000000;
+} 
+
+.last a{
+color:#000000;
+} 
+
+.prev a {
+color:#000000;
+} 
+
+.first a {
+color:#000000;
+} 

@@ -1,7 +1,11 @@
 <div id="all-posts"><!-- 
   <%= render 'shared/content_title', title: "All Posts" %> -->
+
 <br>
+
 <% @posts.each do |post| %>
 <%= render 'post2', post: post %>
 <% end %>
 </div>
+
+<%= paginate @posts %>
