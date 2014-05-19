@@ -76,3 +76,14 @@
 <div class ='nav_item'>
   <%= link_to 'Archive Gallery', archive_posts_path, class: 'btn btn-small'%>
 </div>
+
+<div class='nav_item search_nav_item'>
+  <div class='form-group'>
+<%= form_tag posts_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search], class: 'text-nav' %>
+    <%= submit_tag "Search", class: 'btn btn-small search-nav', :name => nil %>
+  </p>
+<% end %>
+</div>
+</div>

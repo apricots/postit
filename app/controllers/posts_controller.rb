@@ -7,6 +7,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(archive:false).sort_by{|x| x.total_votes}.reverse
     @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
+    if params[:search]
+      @posts = Post.find(:all, :conditions => ['title LIKE ?', "%#{params[:search]}%"])
+    end
   end
 
   def show

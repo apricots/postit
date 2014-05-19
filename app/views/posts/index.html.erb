@@ -2,10 +2,25 @@
   <%= render 'shared/content_title', title: "All Posts" %> -->
 
 <br>
+<% if params[:search] %>
+  <% if @posts.length > 0 %>
+  <%= render 'shared/content_title', title: "Search Results:" %> 
+  <% else %>
+  Sorry, no search results were found.
+<% end %>
 
+<% end %>
 <% @posts.each do |post| %>
 <%= render 'post2', post: post %>
 <% end %>
 </div>
 
+<!-- pagination error when used with search box -->
+<% if params[:search] == nil %>
 <%= paginate @posts %>
+<% end %>
+
+
+
+
+

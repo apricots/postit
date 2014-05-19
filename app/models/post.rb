@@ -13,5 +13,8 @@ class Post < ActiveRecord::Base
   validates :image_url, format: {with: /\.(png|jpg)\Z/i}
 
   sluggable_column :title
+
+
+ 
 end
 
